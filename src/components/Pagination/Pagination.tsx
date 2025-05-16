@@ -16,7 +16,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   for (let i = 1; i <= pageCount; i++) {
     pages.push(
-      <li className={`page-item ${i === currentPage ? 'active' : ''}`}>
+      <li key={i} className={`page-item ${i === currentPage ? 'active' : ''}`}>
         <a
           data-cy="pageLink"
           className="page-link"
