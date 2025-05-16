@@ -1,4 +1,4 @@
-import { react, useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { getNumbers } from './utils';
 import { Pagination } from './components/Pagination';
@@ -27,11 +27,15 @@ export const App: React.FC = () => {
           <select
             data-cy="perPageSelector"
             id="perPageSelector"
+            value={perPage}
             className="form-control"
-            onChange={e => {setPerPage(Number(e.target.value)); setCurrentPage(1)}}
-            >
+            onChange={e => {
+              setPerPage(Number(e.target.value));
+              setCurrentPage(1);
+            }}
+          >
             <option value="3">3</option>
-            <option selected value="5">5</option>
+            <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
           </select>
@@ -42,10 +46,17 @@ export const App: React.FC = () => {
         </label>
       </div>
 
-      <Pagination total={items.length} perPage={perPage} currentPage={currentPage} onPageChange={setCurrentPage}/>
+      <Pagination
+        total={items.length}
+        perPage={perPage}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
       <ul>
-        {showArray.map(item => (
-          <li data-cy="item" key={item}>{item}</li>
+        {showArray.map((item, index) => (
+          <li data-cy="item" key={index}>
+            {item}
+          </li>
         ))}
       </ul>
     </div>
